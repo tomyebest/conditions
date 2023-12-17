@@ -1,1 +1,1 @@
-figure out how the surf is
+where do i surf?
