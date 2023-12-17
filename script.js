@@ -45,5 +45,4 @@ function addData(data) {
   container.appendChild(wavePeriod);
 
 }
-
 // -------------------- //
