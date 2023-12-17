@@ -16,3 +16,11 @@ body {
     justify-content: center;
     min-height: 100vh;
 }
+
+.data-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}

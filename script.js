@@ -26,9 +26,9 @@ async function getConditions() {
 function addData(data) {
   // define ui elements
 
-  const container = document.querySelector(".app-container");
-
+  const container = document.querySelector(".data-section");
   const waveHeight = document.createElement("p");
+
   const waveDirection = document.createElement("p");
   const wavePeriod = document.createElement("p");
 
