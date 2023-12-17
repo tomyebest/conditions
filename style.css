@@ -9,6 +9,14 @@ body {
     width: 100%;
 }
 
+#conditions-h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+
+}
+
 .app-container {
     display: flex;
     flex-direction: column;
@@ -19,8 +27,21 @@ body {
 
 .data-section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: together;
+    max-height: 100px;
     width: 25%;
+}
+
+.wave-height, .wave-direction, .wave-period {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+}
+
+
+p:nth-child(2) {
+    font-weight: 100;
 }
