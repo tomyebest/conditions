@@ -7,13 +7,13 @@ async function getWaves() {
   if (!response.ok) {
     throw new Error("HTTP error " + response.status);
   }
-  const data = await response.json();
+  const waves = await response.json();
 
   // log to console
-  console.log(data);
+  console.log(waves);
 
   // return addData function
-  addData(data);
+  addData(waves);
 }
 
 // return function
@@ -21,93 +21,116 @@ getWaves();
 
 // ------------------- //
 
+
+// FETCH WINDS FROM API //
+
+async function getWinds() {
+  const response = await fetch(
+    "https://api.open-meteo.com/v1/gfs?latitude=-26.6033&longitude=153.091&current=wind_speed_10m&wind_speed_unit=kn&forecast_days=1"
+  );
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+  const winds = await response.json();
+
+  // log to console
+  console.log(winds);
+
+  // return addData function
+  addData(winds);
+}
+
+// return function
+getWinds();
+
+// ------------------- //
+
 // CONVERT WAVE DIRECTION FROM DEGREES TO NORTH-EAST-SOUTH-WEST //
 
-function convertWaveDirection(data) {
-
+function convertWaveDirection(waves) {
   if (
-    data.current.wave_direction >= 0 &&
-    data.current.wave_direction <= 11.25
+    waves.current.wave_direction >= 0 &&
+    waves.current.wave_direction <= 11.25
   ) {
     return "N";
   } else if (
-    data.current.wave_direction >= 11.25 &&
-    data.current.wave_direction <= 33.75
+    waves.current.wave_direction >= 11.25 &&
+    waves.current.wave_direction <= 33.75
   ) {
     return "NNE";
   } else if (
-    data.current.wave_direction >= 33.75 &&
-    data.current.wave_direction <= 56.25
+    waves.current.wave_direction >= 33.75 &&
+    waves.current.wave_direction <= 56.25
   ) {
     return "NE";
   } else if (
-    data.current.wave_direction >= 56.25 &&
-    data.current.wave_direction <= 78.75
+    waves.current.wave_direction >= 56.25 &&
+    waves.current.wave_direction <= 78.75
   ) {
     return "ENE";
   } else if (
-    data.current.wave_direction >= 78.75 &&
-    data.current.wave_direction <= 101.25
+    waves.current.wave_direction >= 78.75 &&
+    waves.current.wave_direction <= 101.25
   ) {
     return "E";
   } else if (
-    data.current.wave_direction >= 101.25 &&
-    data.current.wave_direction <= 123.75
+    waves.current.wave_direction >= 101.25 &&
+    waves.current.wave_direction <= 123.75
   ) {
     return "ESE";
   } else if (
-    data.current.wave_direction >= 123.75 &&
-    data.current.wave_direction <= 146.25
+    waves.current.wave_direction >= 123.75 &&
+    waves.current.wave_direction <= 146.25
   ) {
     return "SE";
   } else if (
-    data.current.wave_direction >= 146.25 &&
-    data.current.wave_direction <= 168.75
+    waves.current.wave_direction >= 146.25 &&
+    waves.current.wave_direction <= 168.75
   ) {
     return "SSE";
   } else if (
-    data.current.wave_direction >= 168.75 &&
-    data.current.wave_direction <= 191.25
+    waves.current.wave_direction >= 168.75 &&
+    waves.current.wave_direction <= 191.25
   ) {
     return "S";
   } else if (
-    data.current.wave_direction >= 191.25 &&
-    data.current.wave_direction <= 213.75
+    waves.current.wave_direction >= 191.25 &&
+    waves.current.wave_direction <= 213.75
   ) {
     return "SSW";
   } else if (
-    data.current.wave_direction >= 213.75 &&
-    data.current.wave_direction <= 236.25
+    waves.current.wave_direction >= 213.75 &&
+    waves.current.wave_direction <= 236.25
   ) {
     return "SW";
   } else if (
-    data.current.wave_direction >= 236.25 &&
-    data.current.wave_direction <= 258.75
+    waves.current.wave_direction >= 236.25 &&
+    waves.current.wave_direction <= 258.75
   ) {
     return "WSW";
   } else if (
-    data.current.wave_direction >= 258.75 &&
-    data.current.wave_direction <= 281.25
+    waves.current.wave_direction >= 258.75 &&
+    waves.current.wave_direction <= 281.25
   ) {
     return "W";
   } else if (
-    data.current.wave_direction >= 281.25 &&
-    data.current.wave_direction <= 303.75
+    waves.current.wave_direction >= 281.25 &&
+    waves.current.wave_direction <= 303.75
   ) {
     return "WNW";
   } else if (
-    data.current.wave_direction >= 303.75 &&
-    data.current.wave_direction <= 326.25
+    waves.current.wave_direction >= 303.75 &&
+    waves.current.wave_direction <= 326.25
   ) {
     return "NW";
   } else if (
-    data.current.wave_direction >= 326.25 &&
-    data.current.wave_direction <= 348.75
+    waves.current.wave_direction >= 326.25 &&
+    waves.current.wave_direction <= 348.75
   ) {
     return "NNW";
   } else if (
-    data.current.wave_direction >= 348.75 &&
-    data.current.wave_direction <= 360
+    waves.current.wave_direction >= 348.75 &&
+    waves.current.wave_direction <= 360
   ) {
     return "N";
   }
@@ -117,22 +140,22 @@ function convertWaveDirection(data) {
 
 // ADD DATA TO HTML //
 
-function addData(data) {
+function addData(waves) {
 
   // wave height & direction 
 
   const waveHeightContainer = document.querySelector(".wave-height");
   const waveHeight = document.createElement("p");
   waveHeight.textContent =
-    `${data.current.wave_height} m / ${(
-      data.current.wave_height * 3.2808
-    ).toFixed(2)} ft ` + convertWaveDirection(data); // use the return value of convertWaveDirection
+    `${waves.current.wave_height} m / ${(
+      waves.current.wave_height * 3.2808
+    ).toFixed(2)} ft ` + convertWaveDirection(waves); // use the return value of convertWaveDirection
 
 
   // wave period
   const wavePeriodContainer = document.querySelector(".wave-period");
   const wavePeriod = document.createElement("p");
-  wavePeriod.textContent = data.current.wave_period + " secs";
+  wavePeriod.textContent = waves.current.wave_period + " secs";
 
   // APPEND ELEMENTS TO CONTAINER //
 
