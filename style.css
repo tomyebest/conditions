@@ -7,6 +7,8 @@ body {
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     width: 100%;
+    background-color: black;
+    color: beige;
 }
 
 #conditions-h1 {
@@ -29,13 +31,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: together;
+    /* justify-content: together; */
     max-height: 100px;
     width: 25%;
 }
 
 .wave-height, .wave-direction, .wave-period {
-    height: 100px;
+    min-height: 25px;
     display: flex;
     flex-direction: row;
     font-weight: 600;
