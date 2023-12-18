@@ -46,36 +46,54 @@ function addData(data) {
 
 }
 */}
-
+// -------------------- //
 
 function addData(data) {
+  // DEFINE UI ELEMENTS
 
-    // DEFINE UI ELEMENTS
+  // wave height
+  const waveHeightContainer = document.querySelector(".wave-height");
+  const waveHeight = document.createElement("p");
+  waveHeight.textContent = `${data.current.wave_height} metres / ${
+    data.current.wave_height * 3.2808
+  } feet`;
 
-    // wave height 
-    const waveHeightContainer = document.querySelector(".wave-height");
-    const waveHeight = document.createElement("p");
-    waveHeight.textContent = data.current.wave_height;
+  // -------------------- //
 
-    // wave direction
+  // wave direction (we need to convert degrees to cardinal direction here)
+
+  function convertWaveDirection(data) {
+    // define ui elements
     const waveDirectionContainer = document.querySelector(".wave-direction");
     const waveDirection = document.createElement("p");
-    waveDirection.textContent = data.current.wave_direction;
 
-    // wave period
-    const wavePeriodContainer = document.querySelector(".wave-period");
-    const wavePeriod = document.createElement("p");
-    wavePeriod.textContent = data.current.wave_period + " seconds";
+    //   // convert degrees to cardinal direction
+    //   if (data.current.wind_direction >= 0 && data.current.wind_direction <= 11.25) {
+    //     windDirectionCardinal.textContent = "North";
+    //   } else if (data.current.wind_direction >= 11.25 && data.current.wind_direction <= 33.75) {
 
-    // APPEND ELEMENTS TO CONTAINER 
+    waveDirection.textContent = data.current.wave_direction + " degrees";
+  }
 
-    // wave height
-    waveHeightContainer.appendChild(waveHeight);
-    
-    // wave direction
-    waveDirectionContainer.appendChild(waveDirection);
 
-    // wave period
-    wavePeriodContainer.appendChild(wavePeriod);
+
+
+  // -------------------- //
+
+  // wave period
+  const wavePeriodContainer = document.querySelector(".wave-period");
+  const wavePeriod = document.createElement("p");
+  wavePeriod.textContent = data.current.wave_period + " seconds";
+
+  // APPEND ELEMENTS TO CONTAINER
+
+  // wave height
+  waveHeightContainer.appendChild(waveHeight);
+
+  // wave direction
+  waveDirectionContainer.appendChild(waveDirection);
+
+  // wave period
+  wavePeriodContainer.appendChild(wavePeriod);
 }
 // -------------------- //
