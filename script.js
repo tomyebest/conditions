@@ -134,7 +134,7 @@ function addData(data) {
   const wavePeriod = document.createElement("p");
   wavePeriod.textContent = data.current.wave_period + " secs";
 
-  // APPEND ELEMENTS TO CONTAINER
+  // APPEND ELEMENTS TO CONTAINER //
 
   // wave height & direction
   waveHeightContainer.appendChild(waveHeight);
@@ -142,4 +142,4 @@ function addData(data) {
   // wave period
   wavePeriodContainer.appendChild(wavePeriod);
 }
-// -------------------- //
+// ----------------------------- //
