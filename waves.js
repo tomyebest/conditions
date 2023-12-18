@@ -12,8 +12,8 @@ async function getWaves() {
   // log to console
   console.log(waves);
 
-  // return addData function
-  addData(waves);
+  // return addWavesData function
+  addWavesData(waves);
 }
 
 // return function
@@ -116,9 +116,8 @@ function convertWaveDirection(waves) {
 
 // ADD DATA TO HTML //
 
-function addData(waves) {
-
-  // wave height & direction 
+function addWavesData(waves) {
+  // wave height & direction
 
   const waveHeightContainer = document.querySelector(".wave-height");
   const waveHeight = document.createElement("p");
@@ -126,7 +125,6 @@ function addData(waves) {
     `${waves.current.wave_height} m / ${(
       waves.current.wave_height * 3.2808
     ).toFixed(2)} ft ` + convertWaveDirection(waves); // use the return value of convertWaveDirection
-
 
   // wave period
   const wavePeriodContainer = document.querySelector(".wave-period");
