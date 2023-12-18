@@ -10,7 +10,6 @@ async function getWaves() {
   const data = await response.json();
 
   // log to console
-
   console.log(data);
 
   // return addData function
