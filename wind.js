@@ -24,24 +24,16 @@ getWinds();
 // ADD DATA TO HTML //
 
 function addWindsData(winds) {
-  // wind height & direction
 
-  const windContainer = document.querySelector(".wind-details");
-  const windDetails = document.createElement("p");
-  windDetails.textContent = winds.current.wind_speed_10m + " kn";
-  
-
-  // wave period
-  const wavePeriodContainer = document.querySelector(".wave-period");
-  const wavePeriod = document.createElement("p");
-  wavePeriod.textContent = waves.current.wave_period + " secs";
+  // wind speed
+  const windSpeedContainer = document.querySelector(".wind-details");
+  const windSpeed = document.createElement("p");
+windSpeed.textContent = Math.round(winds.current.wind_speed_10m) + " knots";
 
   // APPEND ELEMENTS TO CONTAINER //
 
-  // wave height & direction
-  waveHeightContainer.appendChild(waveHeight);
+  // wind speed
+  windSpeedContainer.appendChild(windSpeed);
 
-  // wave period
-  wavePeriodContainer.appendChild(wavePeriod);
 }
 // ----------------------------- //
