@@ -24,7 +24,6 @@ getWaves();
 // CONVERT WAVE DIRECTION FROM DEGREES TO NORTH-EAST-SOUTH-WEST //
 
 function convertWaveDirection(data) {
-  // define ui elements
 
   if (
     data.current.wave_direction >= 0 &&
@@ -113,12 +112,15 @@ function convertWaveDirection(data) {
     return "N";
   }
 }
+
 // -------------------- //
 
-function addData(data) {
-  // DEFINE UI ELEMENTS
+// ADD DATA TO HTML //
 
-  // wave height
+function addData(data) {
+
+  // wave height & direction 
+
   const waveHeightContainer = document.querySelector(".wave-height");
   const waveHeight = document.createElement("p");
   waveHeight.textContent =
@@ -126,9 +128,6 @@ function addData(data) {
       data.current.wave_height * 3.2808
     ).toFixed(2)} ft ` + convertWaveDirection(data); // use the return value of convertWaveDirection
 
-  // wave direction
-
-  // -------------------- //
 
   // wave period
   const wavePeriodContainer = document.querySelector(".wave-period");
@@ -137,11 +136,8 @@ function addData(data) {
 
   // APPEND ELEMENTS TO CONTAINER
 
-  // wave height
+  // wave height & direction
   waveHeightContainer.appendChild(waveHeight);
-
-  // wave direction
-  // waveDirectionContainer.appendChild(waveDirection);
 
   // wave period
   wavePeriodContainer.appendChild(wavePeriod);
