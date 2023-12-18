@@ -2,7 +2,7 @@
 
 async function getWinds() {
   const response = await fetch(
-    "https://api.open-meteo.com/v1/gfs?latitude=-26.6033&longitude=153.091&hourly=wind_speed_10m,wind_direction_10m&forecast_days=1"
+    "https://api.open-meteo.com/v1/gfs?latitude=-26.6033&longitude=153.091&hourly=wind_speed_10m,wind_direction_10m&wind_speed_unit=kn&forecast_days=1"
   );
   if (!response.ok) {
     throw new Error("HTTP error " + response.status);
