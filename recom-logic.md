@@ -19,6 +19,9 @@
 
 ### if wind speed is <= 5 knots
 
+- if wave period is > 12 seconds: RETURN 'It looks like a solid groundswell in the water. Check out the surf report and know your limitations';
+- if wave height is > 0.5m && wave period is =< 6 seconds : RETURN 'It looks like a windswell in the water. Go check out your local but keep expectations low'; 
+- if wave height =< 0.5m : RETURN 'There doesn't seem to be much surf around. It wouldn't hurt to suss your local beachie, though';
 - if wave height is => 0.5m &&  =< 1.5m && wave period is => 7 seconds && =< 10 seconds : RETURN 'Try the open beaches';
 - if wave height is > 1.5m && =< 2.5m && wave period is => 7 seconds && =< 12 seconds : RETURN 'It's probably pumping on the open beaches. Check the tides & know your limitations. The outer points are also worth consideration';
 
@@ -26,3 +29,8 @@
 ### if wave height is < 2.5m 
 
 - if wave height is < 2.5m : RETURN 'Experienced surfers only.'; 
+
+
+### ELSE 
+
+- else : RETURN 'Flag it. Take your significant other out for coffee instead - or do something productive for once, you degenerate.'
