@@ -135,21 +135,20 @@ function recomLogic(waves, winds) {
   }
   // Default condition if none of the above conditions are met
   return "Flag it. Take your significant other out for coffee instead - or do something productive for once, you degenerate.";
+
+
 }
 
 // --------------------------------------------------- //
 
 // ADD DATA TO HTML //
-
 function addRecomData(waves, winds) {
+  console.log('Waves:', waves);
+  console.log('Winds:', winds);
 
   const recommendContainer = document.querySelector(".recommend-section");
   const recommend = document.createElement("p");
   recommend.textContent = recomLogic(waves, winds);
 
-  // APPEND ELEMENTS TO CONTAINER //
-
   recommendContainer.appendChild(recommend);
-
 }
-// ----------------------------- //
