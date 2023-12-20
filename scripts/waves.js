@@ -1,26 +1,3 @@
-// FETCH WAVES FROM API //
-
-async function getWaves() {
-  const response = await fetch(
-    "https://marine-api.open-meteo.com/v1/marine?latitude=-26.6033&longitude=153.091&current=wave_height,wave_direction,wave_period&forecast_days=1"
-  );
-  if (!response.ok) {
-    throw new Error("HTTP error " + response.status);
-  }
-  const waves = await response.json();
-
-  // log to console
-  console.log(waves);
-
-  // return addWavesData function
-  addWavesData(waves);
-}
-
-// return function
-getWaves();
-
-// ------------------- //
-
 // CONVERT WAVE DIRECTION FROM DEGREES TO NORTH-EAST-SOUTH-WEST //
 
 function convertWaveDirection(waves) {
