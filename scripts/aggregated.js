@@ -1,6 +1,6 @@
 // FETCH WAVES AND WINDS FROM API //
 
-async function getData() {
+async function getData(waves, winds) {
   const wavesPromise = fetch(
     "https://marine-api.open-meteo.com/v1/marine?latitude=-26.6033&longitude=153.091&current=wave_height,wave_direction,wave_period&forecast_days=1"
   ).then((response) => {
@@ -247,6 +247,9 @@ function addWindsData(winds) {
 // waves.current.wave_period
 
 function recomLogic(waves, winds) {
+
+  console.log("addRecomData called");
+
   // If wind speed is greater than 5 knots
   if (winds.current.wind_speed_10m > 5) {
     const windDirection = winds.current.direction;
@@ -376,20 +379,18 @@ function recomLogic(waves, winds) {
   }
   // Default condition if none of the above conditions are met
   return "Flag it. Take your significant other out for coffee instead - or do something productive for once, you degenerate.";
-
-
 }
 
 // --------------------------------------------------- //
 
 // ADD DATA TO HTML //
 function addRecomData(waves, winds) {
-  console.log('Waves:', waves);
-  console.log('Winds:', winds);
 
-  const recommendContainer = document.querySelector(".recommend-section");
-  const recommend = document.createElement("p");
-  recommend.textContent = recomLogic(waves, winds);
+    const recommendContainer = document.querySelector(".recommend-section");
+    const recommend = document.createElement("p");
+    recommend.textContent = recomLogic(waves, winds);
+    
+    console.log('Recommendation:', recommend.textContent);
 
-  recommendContainer.appendChild(recommend);
+    recommendContainer.appendChild(recommend);
 }
