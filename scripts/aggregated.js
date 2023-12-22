@@ -248,7 +248,8 @@ function addWindsData(winds) {
 
 function recomLogic(waves, winds) {
 
-  console.log("addRecomData called");
+  console.log("Waves:", waves);
+  console.log("Winds:", winds);
 
   // If wind speed is greater than 5 knots
   if (winds.current.wind_speed_10m > 5) {
@@ -385,12 +386,14 @@ function recomLogic(waves, winds) {
 
 // ADD DATA TO HTML //
 function addRecomData(waves, winds) {
+  console.log('Waves:', waves);
+  console.log('Winds:', winds);
 
-    const recommendContainer = document.querySelector(".recommend-section");
-    const recommend = document.createElement("p");
-    recommend.textContent = recomLogic(waves, winds);
-    
-    console.log('Recommendation:', recommend.textContent);
+  const recommendContainer = document.querySelector(".recommend-section");
+  const recommend = document.createElement("p");
+  recommend.textContent = recomLogic(waves, winds);
+  
+  console.log('Recommendation:', recommend.textContent);
 
-    recommendContainer.appendChild(recommend);
+  recommendContainer.appendChild(recommend);
 }
